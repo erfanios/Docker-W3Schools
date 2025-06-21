@@ -1,0 +1,4 @@
+html/
+*.id
+credentials.txt
+*.log
