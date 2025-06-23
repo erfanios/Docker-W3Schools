@@ -24,8 +24,8 @@ version="${tag}:${number}"
 
 mkdir -p html
 
-# docker build --no-cache -t $tag . || exit 1
-docker build -t $tag . || exit 1
+docker build --no-cache -t $tag . || exit 1
+# docker build -t $tag . || exit 1
 docker tag ${tag} ${version}
 
 docker login

@@ -26,10 +26,10 @@ LOG "-----------------------------------"
 LOG "-----------------------------------"
 
 if [ $# -eq 0 ]; then 
-	echo "Error: You should insert your username for docker hub and name of the image on the docker hub as first and second argument" >> ${log};
+	LOG "Error: You should insert your username for docker hub and name of the image on the docker hub as first and second argument";
 	exit 1;
 fi
 
-./download-or-update.sh || { echo "Download failed" >&2; exit 1; }
+./download-or-update.sh >>${log} 2>&1 || { LOG "Download failed"; exit 1; }
 
-./docker-build-and-push.sh "$@"
+./docker-build-and-push.sh "$@" >>${log} 2>&1
